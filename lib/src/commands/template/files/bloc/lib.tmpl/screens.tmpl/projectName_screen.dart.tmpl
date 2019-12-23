@@ -1,0 +1,19 @@
+import 'package:{{#snake_case}}{{projectName}}{{/snake_case}}/widgets/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:{{#snake_case}}{{projectName}}{{/snake_case}}/blocs/{{#snake_case}}{{projectName}}{{/snake_case}}/bloc.dart';
+
+class {{#pascal_case}}{{projectName}}{{/pascal_case}}Screen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('{{#title_case}}{{projectName}}{{/title_case}}')),
+      body: BlocBuilder<{{#pascal_case}}{{projectName}}{{/pascal_case}}Bloc, {{#pascal_case}}{{projectName}}{{/pascal_case}}State>(
+        builder: (BuildContext context, {{#pascal_case}}{{projectName}}{{/pascal_case}}State state) {
+          return {{#pascal_case}}{{projectName}}{{/pascal_case}}Widget();
+        },
+      ),
+    );
+  }
+}

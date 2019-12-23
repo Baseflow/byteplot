@@ -1,0 +1,15 @@
+import 'dart:async';
+import 'package:bloc/bloc.dart';
+import './bloc.dart';
+
+class {{#pascal_case}}{{projectName}}{{/pascal_case}}Bloc extends Bloc<{{#pascal_case}}{{projectName}}{{/pascal_case}}Event, {{#pascal_case}}{{projectName}}{{/pascal_case}}State> {
+  @override
+  {{#pascal_case}}{{projectName}}{{/pascal_case}}State get initialState => Initial{{#pascal_case}}{{projectName}}{{/pascal_case}}State();
+
+  @override
+  Stream<{{#pascal_case}}{{projectName}}{{/pascal_case}}State> mapEventToState(
+    {{#pascal_case}}{{projectName}}{{/pascal_case}}Event event,
+  ) async* {
+    // TODO: Add Logic
+  }
+}

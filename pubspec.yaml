@@ -1,0 +1,25 @@
+name: byteplot
+description: BytePlot CLI.
+version: 0.1.0
+homepage: https://github.com/baseflow/byteplot
+author: Baseflow <hello@baseflow.com>
+
+environment:
+  sdk: '>=2.5.0 <3.0.0'
+
+executables:
+ byteplot:
+
+dependencies:
+  pedantic: ^1.9.0
+  args: ^1.5.2
+  mustache: ^1.1.1
+  path: ^1.6.4
+  file: ^5.1.0
+  ansicolor: ^1.0.2
+  mustache_recase: ^2.0.1
+  yaml: ^2.2.0
+  yamlicious: ^0.1.0
+  http: ^0.12.0+2
+  version: ^1.0.0
+  

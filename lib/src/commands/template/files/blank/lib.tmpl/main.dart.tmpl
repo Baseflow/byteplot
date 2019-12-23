@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+{{#internationalization}} 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:demo/localizations.dart';
+{{/internationalization}}
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Demo with the blank template',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Demo with the blank template'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Demo with the blank template',
+              ),
+            ],
+          ),
+        ),
+      ),
+      {{#internationalization}} 
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', ''),
+      ],
+      {{/internationalization}}
+    );
+  }
+}

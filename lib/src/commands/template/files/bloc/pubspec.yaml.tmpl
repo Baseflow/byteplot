@@ -1,0 +1,30 @@
+name: {{#snake_case}}{{projectName}}{{/snake_case}}
+description: A new Flutter project with the bloc template.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2  
+  meta: ">=1.1.0 <2.0.0"
+  equatable: ^0.6.1
+  flutter_bloc: ^2.0.0  
+  {{#internationalization}}
+  flutter_localizations:
+    sdk: flutter
+  {{/internationalization}} 
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  {{#internationalization}} 
+  intl: ^0.16.0
+  intl_translation: ^0.17.7
+  {{/internationalization}}  
+
+flutter:
+  uses-material-design: true
