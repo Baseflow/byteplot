@@ -15,12 +15,13 @@ class InternationalizationAddSubCommand extends Command {
   String get description =>
       'Add internationalization functionality to your Flutter project.';
 
+  @override
   Future<void> run() async {
-
     projectRootCheck();
 
-    final Directory _sourceDir = fs.directory(join(libDirPath, 'src/commands/internationalization/files/internationalization'));
-    final Directory _destinationDir = fs.directory(fs.currentDirectory.path + "/lib");
+    final _sourceDir = fs.directory(join(libDirPath,
+        'src/commands/internationalization/files/internationalization'));
+    final _destinationDir = fs.directory(fs.currentDirectory.path + '/lib');
 
     await _addInternationalization(_sourceDir, _destinationDir);
   }
@@ -29,13 +30,13 @@ class InternationalizationAddSubCommand extends Command {
       Directory sourceDir, Directory destinationDir) async {
     await for (var entity in sourceDir.list(recursive: false)) {
       if (entity is Directory) {
-        String newDirPath = path.join(destinationDir.absolute.path,
+        var newDirPath = path.join(destinationDir.absolute.path,
             path.basename(entity.path).replaceAll('.intl', ''));
         var newDir = fs.directory(newDirPath);
         await newDir.create();
         await _addInternationalization(entity.absolute, newDir);
       } else if (entity is File) {
-        String filePath = path
+        var filePath = path
             .join(destinationDir.path, path.basename(entity.path))
             .replaceAll('.intl', '');
         await entity.copy(filePath);

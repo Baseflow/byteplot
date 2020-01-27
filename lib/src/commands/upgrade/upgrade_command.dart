@@ -12,6 +12,7 @@ class UpgradeCommand extends Command {
   @override
   String get description => 'Upgrade to the newest version of the CLI.';
 
+  @override
   Future<void> run() async {
     //print('Upgrading BytePlot CLI');
     await Process.run('pub', ['global', 'activate', 'byteplot'])

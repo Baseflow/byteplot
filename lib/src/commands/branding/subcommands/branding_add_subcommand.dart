@@ -16,8 +16,8 @@ class BrandingAddSubCommand extends Command {
     argParser.addOption('development_team',
         abbr: 'd',
         help: 'The Apple Development Team identifier.',
-        defaultsTo: "",
-        valueHelp: "1A2B3C4D5E");
+        defaultsTo: '',
+        valueHelp: '1A2B3C4D5E');
   }
 
   @override
@@ -26,11 +26,12 @@ class BrandingAddSubCommand extends Command {
   @override
   String get description => 'Add a brand to your Flutter project.';
 
+  @override
   Future<void> run() async {
     projectRootCheck();
 
-    Map brandingConfig = {};
-    Map newBrandingConfig = {};
+    var brandingConfig = <String, dynamic>{};
+    var newBrandingConfig = <String, dynamic>{};
 
     if (argResults.rest.isEmpty) {
       printErrorAndExit('No brand alias specified');
@@ -49,10 +50,15 @@ class BrandingAddSubCommand extends Command {
     //printProgress('Adding ${argResults.rest.first} brand');
 
     if (!fs.file('branding_config.yaml').existsSync()) {
-      await fs.file(join(libDirPath, 'src/commands/branding/files/branding_config.yaml')).copy('branding_config.yaml');
-      brandingConfig = await loadYaml(await fs.file('branding_config.yaml').readAsString());
+      await fs
+          .file(join(
+              libDirPath, 'src/commands/branding/files/branding_config.yaml'))
+          .copy('branding_config.yaml');
+      brandingConfig =
+          await loadYaml(await fs.file('branding_config.yaml').readAsString());
     } else {
-      brandingConfig = await loadYaml(await fs.file('branding_config.yaml').readAsString());
+      brandingConfig =
+          await loadYaml(await fs.file('branding_config.yaml').readAsString());
     }
 
     newBrandingConfig[argResults.rest.first] = {
@@ -70,6 +76,6 @@ class BrandingAddSubCommand extends Command {
         .file('branding_config.yaml')
         .writeAsString(toYamlString(newBrandingConfig));
 
-    //printSuccess('Added ${argResults.rest.first} brand'); 
+    //printSuccess('Added ${argResults.rest.first} brand');
   }
 }

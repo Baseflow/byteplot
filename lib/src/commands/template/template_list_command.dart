@@ -12,16 +12,18 @@ class TemplateListSubCommand extends Command {
   @override
   String get description => 'List the available templates.';
 
+  @override
   Future<void> run() async {
     _listTemplates();
   }
 
   void _listTemplates() {
-    final Directory sourceDir =
+    final sourceDir =
         fs.directory(join(libDirPath, 'src/commands/template/files'));
 
-    print("Available templates: ");
-    for (FileSystemEntity entity in sourceDir.listSync(recursive: false)) {
+    print('Available templates: ');
+    FileSystemEntity entity;
+    for (entity in sourceDir.listSync(recursive: false)) {
       if (entity is Directory) {
         print(entity.path.split('/').last);
       }

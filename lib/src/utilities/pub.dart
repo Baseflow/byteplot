@@ -9,20 +9,19 @@ import 'package:yaml/yaml.dart';
 
 void pubGet() {
   Process.run('flutter', ['pub', 'get']).then((ProcessResult results) {
-      if (results.exitCode == 0) {
-        printSuccess(results.stdout);
-      } else {
-        printErrorAndExit(results.stderr);
-      }
-    });
+    if (results.exitCode == 0) {
+      printSuccess(results.stdout);
+    } else {
+      printErrorAndExit(results.stderr);
+    }
+  });
 }
 
 Future<void> versionCheck() async {
-
   String currentVersionString;
   String latestVersionString;
 
-  File pubSpecLock = await fs.file(join(execDirPath + "/pubspec.lock"));
+  File pubSpecLock = await fs.file(join(execDirPath + '/pubspec.lock'));
   Map pubSpecLockYaml = await loadYaml(pubSpecLock.readAsStringSync());
 
   if (pubSpecLockYaml == null) {
@@ -30,28 +29,33 @@ Future<void> versionCheck() async {
   }
 
   if (pubSpecLockYaml['packages']['byteplot'] != null) {
-    currentVersionString = pubSpecLockYaml['packages']['byteplot']['version'].toString();
+    currentVersionString =
+        pubSpecLockYaml['packages']['byteplot']['version'].toString();
   } else {
     return;
   }
-  
-  var response = await http.get("https://pub.dev/api/packages/byteplot");
 
-  if(response.statusCode == 200){
+  var response = await http.get('https://pub.dev/api/packages/byteplot');
+
+  if (response.statusCode == 200) {
     Map<String, dynamic> package = jsonDecode(response.body);
-    
+
     latestVersionString = package['latest']['version'];
   } else {
     return;
   }
 
-  Version currentVersion = Version.parse(currentVersionString);
-  Version latestVersion = Version.parse(latestVersionString);
+  Version currentVersion;
+  currentVersion = Version.parse(currentVersionString);
+
+  Version latestVersion;
+  latestVersion = Version.parse(latestVersionString);
 
   if (latestVersion > currentVersion) {
-    printError(" ");
+    printError(' ');
     printError('A new version of the BytePlot CLI is available!');
-    printError('Run "byteplot upgrade" to update from $currentVersionString to $latestVersionString');
-    printError(" ");
+    printError(
+        'Run "byteplot upgrade" to update from $currentVersionString to $latestVersionString');
+    printError(' ');
   }
 }

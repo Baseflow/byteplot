@@ -23,22 +23,24 @@ class TemplateApplySubCommand extends Command {
   @override
   String get description => 'Apply a template to your Flutter project.';
 
-  Map<String, dynamic> _context = {}..addAll(mustache_recase.cases);
+  Map<String, dynamic> context = {}..addAll(mustache_recase.cases);
 
+  @override
   Future<void> run() async {
     projectRootCheck();
 
-     if (argResults.rest.isEmpty) {
+    if (argResults.rest.isEmpty) {
       printErrorAndExit('No template specified');
     } else if (argResults.rest.length > 1) {
       printErrorAndExit('Too many arguments specified');
     }
 
-    final Directory _sourceDir = fs.directory(join(libDirPath, 'src/commands/template/files/${argResults.rest.first}'));
+    final Directory _sourceDir = fs.directory(join(
+        libDirPath, 'src/commands/template/files/${argResults.rest.first}'));
     final Directory _destinationDir = fs.currentDirectory;
 
-    _context['projectName'] = _destinationDir.path.split('/').last;
-    _context['internationalization'] = argResults['internationalization'];
+    context['projectName'] = _destinationDir.path.split('/').last;
+    context['internationalization'] = argResults['internationalization'];
 
     await _renderTemplate(_sourceDir, _destinationDir);
   }
@@ -56,9 +58,9 @@ class TemplateApplySubCommand extends Command {
           return;
         }
 
-        String newDirPath = path
+        var newDirPath = path
             .join(destinationDir.absolute.path, path.basename(entity.path))
-            .replaceAll('projectName', _context['projectName'])
+            .replaceAll('projectName', context['projectName'])
             .replaceAll('.tmpl', '')
             .replaceAll('.intl', '');
         var newDir = fs.directory(newDirPath);
@@ -70,12 +72,12 @@ class TemplateApplySubCommand extends Command {
           return;
         }
 
-        final String entityString = entity.readAsStringSync();
-        final String renderedContents =
-            mustache.Template(entityString).renderString(_context);
-        String filePath = path
+        final entityString = entity.readAsStringSync();
+        final renderedContents =
+            mustache.Template(entityString).renderString(context);
+        var filePath = path
             .join(destinationDir.path, path.basename(entity.path))
-            .replaceAll('projectName', _context['projectName'])
+            .replaceAll('projectName', context['projectName'])
             .replaceAll('.tmpl', '')
             .replaceAll('.intl', '');
         File newFile = fs.file(filePath);

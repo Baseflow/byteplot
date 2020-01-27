@@ -19,7 +19,7 @@ Directory get libDir => fs.directory(join(binDir.parent.path, 'lib'));
 String get libDirPath => libDir.path;
 
 void projectRootCheck() {
-  if(!fs.file('pubspec.yaml').existsSync()) {
+  if (!fs.file('pubspec.yaml').existsSync()) {
     printErrorAndExit('Please perform this action from project root.');
   }
 }

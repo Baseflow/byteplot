@@ -1,4 +1,3 @@
-
 import 'package:args/command_runner.dart';
 import 'package:byteplot/src/commands/generate/subcommands/generate_bloc_subcommand.dart';
 

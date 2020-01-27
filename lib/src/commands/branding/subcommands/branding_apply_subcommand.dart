@@ -17,6 +17,7 @@ class BrandingApplySubCommand extends Command {
   Map _brandingConfig = {};
   Map _brand = {};
 
+  @override
   Future<void> run() async {
     projectRootCheck();
 
@@ -40,7 +41,8 @@ class BrandingApplySubCommand extends Command {
     //printProgress('Loading config');
     if (fs.file('branding_config.yaml').existsSync()) {
       //printSuccess('Loaded config');
-      return await loadYaml(await fs.file('branding_config.yaml').readAsString());
+      return await loadYaml(
+          await fs.file('branding_config.yaml').readAsString());
     } else {
       printErrorAndExit('No branding config found.');
     }
@@ -55,7 +57,7 @@ class BrandingApplySubCommand extends Command {
     return null;
   }
 
-  _replaceIOSBundleIdentifier() async {
+  void _replaceIOSBundleIdentifier() async {
     File sourceFile = fs.file(_brandingConfig['PATH_TO_PBXPROJ']);
     await sourceFile.readAsString().then((String sourceFileString) {
       sourceFile.writeAsStringSync(sourceFileString.replaceAll(
@@ -65,7 +67,7 @@ class BrandingApplySubCommand extends Command {
     //printSuccess('Replaced bundle identifier in Xcode project file');
   }
 
-  _replaceIOSDevelopmentTeam() async {
+  void _replaceIOSDevelopmentTeam() async {
     File sourceFile = fs.file(_brandingConfig['PATH_TO_PBXPROJ']);
     await sourceFile.readAsString().then((String sourceFileString) {
       sourceFile.writeAsString(sourceFileString.replaceAll(
@@ -75,7 +77,7 @@ class BrandingApplySubCommand extends Command {
     //printSuccess('Replaced development team in Xcode project file');
   }
 
-  _replaceAndroidBundleIdentifier() async {
+  void _replaceAndroidBundleIdentifier() async {
     File sourceFile = fs.file(_brandingConfig['PATH_TO_ANDROIDMANIFEST']);
     await sourceFile.readAsString().then((String sourceFileString) {
       sourceFile.writeAsString(sourceFileString.replaceAll(
@@ -85,7 +87,7 @@ class BrandingApplySubCommand extends Command {
     //printSuccess('Replaced bundle identifier in Android Manifest...');
   }
 
-  _replaceAndroidApplicationId() async {
+  void _replaceAndroidApplicationId() async {
     final File sourceFile = fs.file(_brandingConfig['PATH_TO_BUILDGRADLE']);
     await sourceFile.readAsString().then((String sourceFileString) {
       sourceFile.writeAsString(sourceFileString.replaceAll(
@@ -95,26 +97,30 @@ class BrandingApplySubCommand extends Command {
     //printSuccess('Replaced application id in build.gradle...');
   }
 
-  _applyBrandFiles() async {
+  void _applyBrandFiles() async {
     Directory sourceDir = fs.directory(path.join(
         _brandingConfig['PATH_TO_PROJECT_BRANDING_FOLDER'], _brand['alias']));
-    Directory destinationDir = fs.directory(_brandingConfig['PATH_TO_PROJECT_DESTINATION_FOLDER']);
+    Directory destinationDir =
+        fs.directory(_brandingConfig['PATH_TO_PROJECT_DESTINATION_FOLDER']);
 
-   await _replaceBrandFiles(sourceDir, destinationDir);
+    await _replaceBrandFiles(sourceDir, destinationDir);
   }
 
   Future<void> _checkFolderStructure(
       Directory sourceDir, Directory destinationDir) async {
-    bool correctStructure = true;
+    var correctStructure = true;
 
     await for (var sourceDirEntity in sourceDir.list(recursive: true)) {
+      var sourceDirEntityPath = sourceDirEntity.path.split(
+          _brandingConfig['PATH_TO_PROJECT_BRANDING_FOLDER'] +
+              _brand['alias'] +
+              '/')[1];
 
-      String sourceDirEntityPath = sourceDirEntity.path.split(
-          _brandingConfig['PATH_TO_PROJECT_BRANDING_FOLDER'] + _brand['alias'] + "/")[1];
-    
       if (sourceDirEntity is Directory) {
         if (!fs
-            .directory(path.join(_brandingConfig['PATH_TO_PROJECT_DESTINATION_FOLDER'], sourceDirEntityPath))
+            .directory(path.join(
+                _brandingConfig['PATH_TO_PROJECT_DESTINATION_FOLDER'],
+                sourceDirEntityPath))
             .existsSync()) {
           printError(
               sourceDirEntityPath + ' directory doesn\'t exists in project.');
@@ -123,7 +129,9 @@ class BrandingApplySubCommand extends Command {
       }
       if (sourceDirEntity is File) {
         if (!fs
-            .file(path.join(_brandingConfig['PATH_TO_PROJECT_DESTINATION_FOLDER'], sourceDirEntityPath))
+            .file(path.join(
+                _brandingConfig['PATH_TO_PROJECT_DESTINATION_FOLDER'],
+                sourceDirEntityPath))
             .existsSync()) {
           printError(sourceDirEntityPath + ' file doesn\'t exists in project.');
           correctStructure = false;
@@ -131,7 +139,7 @@ class BrandingApplySubCommand extends Command {
       }
     }
     if (!correctStructure) {
-      print(" ");
+      print(' ');
       printErrorAndExit(
           'Please match your branding folder structure with the project folder structure.');
     }
@@ -142,15 +150,14 @@ class BrandingApplySubCommand extends Command {
     await _checkFolderStructure(sourceDir, destinationDir);
 
     await for (var entity in sourceDir.list(recursive: false)) {
-
-
       if (entity is Directory) {
-        var newDirectory = fs.directory(
-            path.join(destinationDir.absolute.path, path.basename(entity.path)));
+        var newDirectory = fs.directory(path.join(
+            destinationDir.absolute.path, path.basename(entity.path)));
         await newDirectory.create();
         await _replaceBrandFiles(entity.absolute, newDirectory);
       } else if (entity is File) {
-        await entity.copy(path.join(destinationDir.path, path.basename(entity.path)));
+        await entity
+            .copy(path.join(destinationDir.path, path.basename(entity.path)));
       }
     }
   }

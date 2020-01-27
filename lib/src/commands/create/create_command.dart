@@ -119,12 +119,13 @@ class CreateCommand extends Command {
   @override
   String get description => 'Create a brand new Flutter project.';
 
+  @override
   Future<void> run() async {
     if (argResults.rest.isEmpty) {
       printErrorAndExit('No project name specified.');
     } else if (argResults.rest.isNotEmpty) {
       //printProgress('Creating Flutter project');
-      await Process.run('flutter', ['create']..addAll(argResults.arguments))
+      await Process.run('flutter', ['create', ...argResults.arguments])
           .then((ProcessResult results) {
         if (results.exitCode == 0) {
           //printSuccess('Created ${argResults.rest.first} project');

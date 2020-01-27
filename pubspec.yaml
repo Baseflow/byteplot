@@ -11,7 +11,6 @@ executables:
  byteplot:
 
 dependencies:
-  pedantic: ^1.9.0
   args: ^1.5.2
   mustache: ^1.1.1
   path: ^1.6.4
@@ -22,4 +21,7 @@ dependencies:
   yamlicious: ^0.1.0
   http: ^0.12.0+2
   version: ^1.0.0
+
+dev_dependencies:
+  pedantic: ^1.9.0
   
