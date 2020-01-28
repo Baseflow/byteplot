@@ -1,6 +1,6 @@
 # BytePlot CLI
 
-A Dart command-line tool for Flutter to make your life easier.
+A Dart CLI tool for creating Flutter projects, apply templates, generating BLoC's and more!
 
 ## Features
 
