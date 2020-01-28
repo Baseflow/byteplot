@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+
+class {{#pascal_case}}{{projectName}}{{/pascal_case}}Widget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            '{{#title_case}}{{projectName}}{{/title_case}} with BLoC template generated with BytePlot CLI',
+          ),
+        ],
+      ),
+    );
+  }
+}

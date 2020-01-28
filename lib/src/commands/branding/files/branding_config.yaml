@@ -1,0 +1,5 @@
+PATH_TO_ANDROIDMANIFEST: "android/app/src/main/AndroidManifest.xml"
+PATH_TO_BUILDGRADLE: "android/app/build.gradle"
+PATH_TO_PBXPROJ: "ios/Runner.xcodeproj/project.pbxproj"
+PATH_TO_PROJECT_DESTINATION_FOLDER: "./"
+PATH_TO_PROJECT_BRANDING_FOLDER: "branding/"
