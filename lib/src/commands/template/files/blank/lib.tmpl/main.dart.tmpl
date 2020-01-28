@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 {{#internationalization}} 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:demo/localizations.dart';
+import 'package:{{#snake_case}}{{projectName}}{{/snake_case}}/localizations.dart';
 {{/internationalization}}
 
 void main() => runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Demo with the blank template',
+                '{{#title_case}}{{projectName}}{{/title_case}} with Blank template generated with BytePlot CLI',
               ),
             ],
           ),

@@ -20,7 +20,6 @@ class AppLocalizations {
   }
 
   greeting() => Intl.message('Hello');
-
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
