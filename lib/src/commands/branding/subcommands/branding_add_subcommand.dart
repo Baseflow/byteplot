@@ -30,8 +30,8 @@ class BrandingAddSubCommand extends Command {
   Future<void> run() async {
     projectRootCheck();
 
-    var brandingConfig = <String, dynamic>{};
-    var newBrandingConfig = <String, dynamic>{};
+    var brandingConfig = {};
+    var newBrandingConfig = {};
 
     if (argResults.rest.isEmpty) {
       printErrorAndExit('No brand alias specified');

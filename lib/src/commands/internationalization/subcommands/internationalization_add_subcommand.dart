@@ -24,6 +24,8 @@ class InternationalizationAddSubCommand extends Command {
     final _destinationDir = fs.directory(fs.currentDirectory.path + '/lib');
 
     await _addInternationalization(_sourceDir, _destinationDir);
+
+    print('For further instructions visit: https://flutter.dev/docs/development/accessibility-and-localization/internationalization#appendix-using-the-dart-intl-tools');
   }
 
   Future<void> _addInternationalization(
