@@ -1,3 +1,7 @@
+## 0.1.1
+- Added example app.
+- Several bugfixes.
+
 ## 0.1.0
 - Create a brand new Flutter project.
 - List and apply templates.
