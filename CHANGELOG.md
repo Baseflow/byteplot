@@ -1,3 +1,7 @@
+## 0.1.2
+- Fixed a bug where the filepaths would point to the wrong files.
+- Added docs through docsify [Byteplot](https://www.byteplot.com "Byteplot").
+
 ## 0.1.1
 - Added example app.
 - Several bugfixes.
