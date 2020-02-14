@@ -19,7 +19,7 @@ class TemplateListSubCommand extends Command {
 
   void _listTemplates() {
     final sourceDir =
-        fs.directory(join(libDirPath, 'src/commands/template/files'));
+        fs.directory(join(byteplotDirPath, 'lib/src/commands/template/files'));
 
     print('Available templates: ');
     FileSystemEntity entity;

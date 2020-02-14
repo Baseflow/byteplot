@@ -52,7 +52,7 @@ class BrandingAddSubCommand extends Command {
     if (!fs.file('branding_config.yaml').existsSync()) {
       await fs
           .file(join(
-              libDirPath, 'src/commands/branding/files/branding_config.yaml'))
+              byteplotDirPath, 'lib/src/commands/branding/files/branding_config.yaml'))
           .copy('branding_config.yaml');
       brandingConfig =
           await loadYaml(await fs.file('branding_config.yaml').readAsString());

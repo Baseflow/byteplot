@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:args/command_runner.dart';
 import 'package:byteplot/src/utilities/utilities.dart';
 import 'package:file/file.dart';
@@ -34,7 +36,7 @@ class GenerateBlocSubCommand extends Command {
     }
 
     final _sourceDir =
-        fs.directory(join(libDirPath, 'src/commands/generate/files/bloc'));
+        fs.directory(join(byteplotDirPath, 'lib/src/commands/generate/files/bloc'));
     var _destinationDir = fs.currentDirectory;
 
     if (argResults['path'] != null) {
