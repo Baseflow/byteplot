@@ -36,7 +36,7 @@ class TemplateApplySubCommand extends Command {
     }
 
     final Directory _sourceDir = fs.directory(join(
-        libDirPath, 'src/commands/template/files/${argResults.rest.first}'));
+        byteplotDirPath, 'lib/src/commands/template/files/${argResults.rest.first}'));
     final Directory _destinationDir = fs.currentDirectory;
 
     context['projectName'] = _destinationDir.path.split('/').last;

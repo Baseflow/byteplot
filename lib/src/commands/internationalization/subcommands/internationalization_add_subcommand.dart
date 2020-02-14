@@ -19,8 +19,8 @@ class InternationalizationAddSubCommand extends Command {
   Future<void> run() async {
     projectRootCheck();
 
-    final _sourceDir = fs.directory(join(libDirPath,
-        'src/commands/internationalization/files/internationalization'));
+    final _sourceDir = fs.directory(join(byteplotDirPath,
+        'lib/src/commands/internationalization/files/internationalization'));
     final _destinationDir = fs.directory(fs.currentDirectory.path + '/lib');
 
     await _addInternationalization(_sourceDir, _destinationDir);

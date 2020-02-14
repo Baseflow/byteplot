@@ -17,6 +17,14 @@ void pubGet() {
   });
 }
 
+String get byteplotVersion {
+
+  File pubspec = fs.file(join(execDirPath + '/pubspec.yaml'));
+  Map pubspecYaml = loadYaml(pubspec.readAsStringSync());
+
+  return pubspecYaml['version'];
+}
+
 Future<void> versionCheck() async {
   String currentVersionString;
   String latestVersionString;
