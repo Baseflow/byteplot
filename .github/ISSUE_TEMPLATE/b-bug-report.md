@@ -14,8 +14,9 @@ about: Create a report to help us fix bugs and make improvements
 
 ### Configuration
 
-**Version:** 1.x
+**Version:** 0.x
 
 **Platform:** 
-- [ ] :iphone: iOS
-- [ ] :robot: Android
+- [ ] MacOS
+- [ ] Linux
+- [ ] Windows

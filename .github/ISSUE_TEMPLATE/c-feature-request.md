@@ -1,7 +1,7 @@
 ---
 
 name: 🚀 Feature Request
-about: Want to see something new included in the Framework? Submit it!
+about: Want to see something new included in the tool? Submit it!
 ---
 
 ## 🚀 Feature Requests
@@ -13,7 +13,3 @@ about: Want to see something new included in the Framework? Submit it!
 
 ### Describe the feature
 <!--- Use as much detail as possible here! --->
-
-### Platforms affected (mark all that apply)
-- [ ] :iphone: iOS
-- [ ] :robot: Android

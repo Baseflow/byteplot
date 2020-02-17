@@ -1,4 +1,4 @@
-Contributing to the Flutter Geolocator plugin
+Contributing to the Byteplot CLI.
 =============================================
 
 What you will need
@@ -6,25 +6,20 @@ What you will need
 
  * A Linux, Mac OS X, or Windows machine (note: to run and compile iOS specific parts you'll need access to a Mac OS X machine);
  * git (used for source version control, installation instruction can be found [here](https://git-scm.com/));
+ * The Dart SDK (installation instructions can be found [here](https://dart.dev/get-dart));
  * The Flutter SDK (installation instructions can be found [here](https://flutter.io/get-started/install/));
  * A personal GitHub account (if you don't have one, you can sign-up for free [here](https://github.com/))
 
 Setting up your development environment
 ---------------------------------------
 
- * Fork `https://github.com/BaseflowIT/flutter-geolocator` into your own GitHub account. If you already have a fork and moving to a new computer, make sure you update you fork.
+ * Fork `https://github.com/Baseflow/byteplot` into your own GitHub account. If you already have a fork and moving to a new computer, make sure you update your fork.
  * If you haven't configured your machine with an SSH key that's known to github, then
    follow [GitHub's directions](https://help.github.com/articles/generating-ssh-keys/)
    to generate an SSH key.
- * Clone your forked repo on your local development machine: `git clone git@github.com:<your_name_here>/flutter-geolocator.git`
- * Change into the `flutter-geolocator` directory: `cd flutter-geolocator`
- * Add an upstream to the original repo, so that fetch from the master repository and not your clone: `git remote add upstream git@github.com:BaseflowIT/flutter-geolocator.git`
-
-Running the example project
----------------------------
-
- * Change into the example directory: `cd example`
- * Run the App: `flutter run`
+ * Clone your forked repo on your local development machine: `git clone git@github.com:<your_name_here>/byteplot.git`
+ * Change into the `byteplot` directory: `cd byteplot`
+ * Add an upstream to the original repo, so that fetch from the master repository and not your clone: `git remote add upstream git@github.com:Baseflow/byteplot.git`
 
 Contribute
 ----------
@@ -44,6 +39,6 @@ We really appreciate contributions via GitHub pull requests. To contribute take 
 
 Send us your pull request:
 
- * Go to `https://github.com/BaseflowIT/flutter-geolocator` and click the "Compare & pull request" button.
+ * Go to `https://github.com/Baseflow/byteplot` and click the "Compare & pull request" button.
 
  Please make sure you solved all warnings and errors reported by the static code analyses and that you fill in the full pull request template. Failing to do so will result in us asking you to fix it.

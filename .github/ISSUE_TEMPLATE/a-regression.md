@@ -16,8 +16,9 @@ about: Report unexpected behavior that worked previously
 
 ### Configuration
 
-**Version:** 1.x
+**Version:** 0.x
 
 **Platform:** 
-- [ ] :iphone: iOS
-- [ ] :robot: Android
+- [ ] MacOS
+- [ ] Linux
+- [ ] Windows

@@ -11,7 +11,3 @@ about: Proposals for code cleanup, refactor and improvements in general
 ### Pitch
 
 <!--- How will this refactor improve contributors' lives? Input as many details as possible! --->
-
-### Platforms affected (mark all that apply)
-- [ ] :iphone: iOS
-- [ ] :robot: Android

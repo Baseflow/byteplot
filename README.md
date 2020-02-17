@@ -10,6 +10,8 @@ Branch  | Build Status
 develop | [![Build Status](https://app.bitrise.io/app/3f5ff86dcc5b09d3/status.svg?token=91WsEOLzokaYY7UAdpVh5A&branch=develop)](https://app.bitrise.io/app/3f5ff86dcc5b09d3)
 master  | [![Build Status](https://app.bitrise.io/app/3f5ff86dcc5b09d3/status.svg?token=91WsEOLzokaYY7UAdpVh5A&branch=master)](https://app.bitrise.io/app/3f5ff86dcc5b09d3)
 
+!> Current version of the Byteplot CLI only works on MacOS & Linux.
+
 ## 🚀 Features
 
 - Create a brand new Flutter project.

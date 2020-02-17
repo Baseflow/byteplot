@@ -1,6 +1,6 @@
 name: byteplot
 description: A Dart CLI tool for creating Flutter projects, applying templates, generating BLoC's and more!
-version: 0.1.2
+version: 0.1.3
 homepage: https://github.com/baseflow/byteplot
 
 environment:
