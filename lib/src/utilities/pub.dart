@@ -18,11 +18,10 @@ void pubGet() {
 }
 
 String get byteplotVersion {
+  File pubspecLock = fs.file(join(execDirPath + '/pubspec.lock'));
+  Map pubspecLockYaml = loadYaml(pubspecLock.readAsStringSync());
 
-  File pubspec = fs.file(join(execDirPath + '/pubspec.yaml'));
-  Map pubspecYaml = loadYaml(pubspec.readAsStringSync());
-
-  return pubspecYaml['version'];
+  return pubspecLockYaml['packages']['byteplot']['version'].toString();
 }
 
 Future<void> versionCheck() async {

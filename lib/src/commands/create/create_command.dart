@@ -129,8 +129,7 @@ class CreateCommand extends Command {
       var arguments = ['create'];
       arguments.addAll(argResults.arguments);
 
-      await Process.run('flutter', arguments)
-          .then((ProcessResult results) {
+      await Process.run('flutter', arguments).then((ProcessResult results) {
         if (results.exitCode == 0) {
           //printSuccess('Created ${argResults.rest.first} project');
         } else {

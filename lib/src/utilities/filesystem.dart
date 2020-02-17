@@ -18,7 +18,8 @@ String get binDirPath => binDir.path;
 Directory get libDir => fs.directory(join(binDir.parent.path, 'lib'));
 String get libDirPath => libDir.path;
 
-String get byteplotDirPath => join(Platform.environment['HOME'], '.pub-cache/hosted/pub.dartlang.org/byteplot-$byteplotVersion');
+String get byteplotDirPath => join(Platform.environment['HOME'],
+    '.pub-cache/hosted/pub.dartlang.org/byteplot-$byteplotVersion');
 
 void projectRootCheck() {
   if (!fs.file('pubspec.yaml').existsSync()) {

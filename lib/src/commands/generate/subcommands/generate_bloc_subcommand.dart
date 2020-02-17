@@ -35,8 +35,8 @@ class GenerateBlocSubCommand extends Command {
       printErrorAndExit('Too many arguments specified');
     }
 
-    final _sourceDir =
-        fs.directory(join(byteplotDirPath, 'lib/src/commands/generate/files/bloc'));
+    final _sourceDir = fs.directory(
+        join(byteplotDirPath, 'lib/src/commands/generate/files/bloc'));
     var _destinationDir = fs.currentDirectory;
 
     if (argResults['path'] != null) {

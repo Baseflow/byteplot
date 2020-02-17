@@ -35,8 +35,8 @@ class TemplateApplySubCommand extends Command {
       printErrorAndExit('Too many arguments specified');
     }
 
-    final Directory _sourceDir = fs.directory(join(
-        byteplotDirPath, 'lib/src/commands/template/files/${argResults.rest.first}'));
+    final Directory _sourceDir = fs.directory(join(byteplotDirPath,
+        'lib/src/commands/template/files/${argResults.rest.first}'));
     final Directory _destinationDir = fs.currentDirectory;
 
     context['projectName'] = _destinationDir.path.split('/').last;
