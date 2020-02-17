@@ -125,8 +125,10 @@ class CreateCommand extends Command {
       printErrorAndExit('No project name specified.');
     } else if (argResults.rest.isNotEmpty) {
       //printProgress('Creating Flutter project');
-      var arguments = argResults.arguments ?? <String>[];
-      arguments.insert(0, 'create');
+
+      var arguments = ['create'];
+      arguments.addAll(argResults.arguments);
+
       await Process.run('flutter', arguments)
           .then((ProcessResult results) {
         if (results.exitCode == 0) {
@@ -134,7 +136,7 @@ class CreateCommand extends Command {
         } else {
           printErrorAndExit(results.stderr);
         }
-      });
+      }).;
     }
   }
 }
