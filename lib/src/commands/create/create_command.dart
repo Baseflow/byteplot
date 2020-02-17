@@ -136,7 +136,7 @@ class CreateCommand extends Command {
         } else {
           printErrorAndExit(results.stderr);
         }
-      }).;
+      });
     }
   }
 }
